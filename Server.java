@@ -1,14 +1,15 @@
 import java.util.*;
+import java.time.*;
 import java.rmi.server.*;
 import java.rmi.registry.*;
 
 public class Server extends UnicastRemoteObject implements RentalInterface {
     private List<Listing> listings;
     private List<Reservation> reservations;
-    private String name;
 
     public Server() throws Exception {
         listings = new ArrayList<Listing>();
+        reservations = new ArrayList<Reservation>();
     }
 
     public static void main(String args[]) {
@@ -23,14 +24,6 @@ public class Server extends UnicastRemoteObject implements RentalInterface {
 
     // Host
 
-    public void setName(String _name) {
-        name = _name;
-    }
-
-    public String getName() {
-        return name;
-    }
-
     public void addListing(String title, String location, int noOfRooms, double price, boolean availability) {
         Listing newListing = new Listing(title, location, noOfRooms, price, availability);
         listings.add(newListing);
@@ -43,8 +36,10 @@ public class Server extends UnicastRemoteObject implements RentalInterface {
 
     // Guest
 
-    public void addReservation() {
-
+    public void addReservation(LocalDateTime _checkIn, LocalDateTime _checkOut, int _noOfGuest, double _payment,
+            LocalDateTime _bookingDateTime) {
+        Reservation newReservation = new Reservation(_checkIn, _checkOut, _noOfGuest, _payment, _bookingDateTime);
+        reservations.add(newReservation);
     }
 
     public void deleteReservation() {

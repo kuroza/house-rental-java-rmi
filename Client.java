@@ -1,4 +1,5 @@
 import java.util.*;
+import java.time.*;
 import java.rmi.registry.*;
 
 public class Client {
@@ -22,6 +23,13 @@ public class Client {
             else
                 System.out.println("Listing doesn't exist");
 
+            rental.addReservation(LocalDateTime.of(2021, 10, 31, 14, 00), LocalDateTime.of(2021, 11, 01, 12, 00), 4, 79,
+                    LocalDateTime.of(2021, 10, 29, 16, 00));
+            List<Reservation> newReservations = rental.getAllReservations();
+
+            for (Reservation reservation : newReservations) {
+                printReservation(reservation);
+            }
         } catch (Exception e) {
             System.out.printf(e.toString());
         }
@@ -34,5 +42,13 @@ public class Client {
         System.out.println("Price: $" + listing.getPrice());
         System.out.println("Availabile: " + listing.getAvailability());
         System.out.println();
+    }
+
+    public static void printReservation(Reservation reservation) {
+        System.out.println("Check in date and time: " + reservation.getCheckInDateTime());
+        System.out.println("Check out date and time: " + reservation.getCheckOutDateTime());
+        System.out.println("No. of guests: " + reservation.getNoOfGuest());
+        System.out.println("Total payment: $" + reservation.getTotalPayment());
+        System.out.println("Booking date and time: " + reservation.getBookingDateTime());
     }
 }
