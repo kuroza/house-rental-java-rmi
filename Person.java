@@ -1,7 +1,7 @@
 import java.time.*;
 
 public class Person {
-    // id
+    int id;
     String name;
     String address;
     int bankAccount;

@@ -4,8 +4,8 @@ import java.rmi.Remote;
 import java.rmi.RemoteException;
 
 public interface RentalInterface extends Remote {
-    public void addListing(String title, String location, int noOfRooms, double price, boolean availability)
-            throws Exception;
+    public void addListing(int _id, String _title, String _location, int _noOfRooms, double _price,
+            boolean _availability) throws Exception;
 
     public void addReservation(int _id, LocalDateTime _checkIn, LocalDateTime _checkOut, int _noOfGuest,
             double _payment, LocalDateTime _bookingDateTime) throws Exception;

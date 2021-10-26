@@ -12,8 +12,9 @@ public class Rental extends UnicastRemoteObject implements RentalInterface {
         reservations = new ArrayList<Reservation>();
     }
 
-    public void addListing(String title, String location, int noOfRooms, double price, boolean availability) {
-        Listing newListing = new Listing(title, location, noOfRooms, price, availability);
+    public void addListing(int _id, String _title, String _location, int _noOfRooms, double _price,
+            boolean _availability) {
+        Listing newListing = new Listing(_id, _title, _location, _noOfRooms, _price, _availability);
         listings.add(newListing);
     }
 

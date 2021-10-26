@@ -9,14 +9,11 @@ public class Client {
             RentalInterface rental = (RentalInterface) reg.lookup("rental");
             System.out.println("Connected to RMI server\n");
 
-            rental.addListing("Rental3", "Gadong", 2, 50, true);
-            rental.addListing("Rental4", "Beribi", 3, 70, true);
-            List<Listing> newListings = rental.getAllListings();
+            rental.addListing(3, "Rental3", "Gadong", 2, 50, true);
+            rental.addListing(4, "Rental4", "Beribi", 3, 70, true);
+            printAllListings(rental);
 
-            for (Listing listing : newListings) {
-                printListing(listing);
-            }
-
+            // check if rental exists
             Listing rental5 = rental.getListingByTitle("Rental5");
             if (rental5 != null)
                 printListing(rental5);
@@ -36,6 +33,7 @@ public class Client {
     }
 
     public static void printListing(Listing listing) {
+        System.out.println("Listing id: " + listing.getId());
         System.out.println("Title: " + listing.getTitle());
         System.out.println("Location: " + listing.getLocation());
         System.out.println("No. of rooms: " + listing.getNoOfRooms());
@@ -52,6 +50,17 @@ public class Client {
         System.out.println("Total payment: $" + reservation.getTotalPayment());
         System.out.println("Booking date and time: " + reservation.getBookingDateTime());
         System.out.println();
+    }
+
+    public static void printAllListings(RentalInterface rental) {
+        try {
+            List<Listing> newListings = rental.getAllListings();
+            for (Listing listing : newListings) {
+                printListing(listing);
+            }
+        } catch (Exception e) {
+            System.out.printf(e.toString());
+        }
     }
 
     public static void printAllReservations(RentalInterface rental) {

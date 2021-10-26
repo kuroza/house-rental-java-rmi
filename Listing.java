@@ -1,19 +1,24 @@
 import java.io.Serializable;
 
 public class Listing implements Serializable {
-    // id
+    private int id;
     private String title;
     private String location;
     private int noOfRooms;
     private double price;
     private boolean availability;
 
-    public Listing(String _title, String _location, int _noOfRooms, double _price, boolean _availability) {
+    public Listing(int _id, String _title, String _location, int _noOfRooms, double _price, boolean _availability) {
+        id = _id;
         title = _title;
         location = _location;
         noOfRooms = _noOfRooms;
         price = _price;
         availability = _availability;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getTitle() {
