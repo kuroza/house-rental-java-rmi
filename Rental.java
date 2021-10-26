@@ -18,9 +18,11 @@ public class Rental extends UnicastRemoteObject implements RentalInterface {
         listings.add(newListing);
     }
 
-    public void deleteListing(int id) {
-        // search listing id for each listing in listings
-        // remove listing from listings
+    public void deleteListing(int _id) {
+        for (int i = 0; i < listings.size(); i++) {
+            if (listings.get(i).getId() == _id)
+                listings.remove(i);
+        }
     }
 
     public void addReservation(int _id, LocalDateTime _checkIn, LocalDateTime _checkOut, int _noOfGuest,
@@ -31,9 +33,8 @@ public class Rental extends UnicastRemoteObject implements RentalInterface {
 
     public void deleteReservation(int _id) {
         for (int i = 0; i < reservations.size(); i++) {
-            if (reservations.get(i).getId() == _id) {
+            if (reservations.get(i).getId() == _id)
                 reservations.remove(i);
-            }
         }
     }
 

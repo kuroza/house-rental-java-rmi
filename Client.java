@@ -27,6 +27,8 @@ public class Client {
             rental.deleteReservation(1);
             printAllReservations(rental);
 
+            rental.deleteListing(3);
+            printAllListings(rental);
         } catch (Exception e) {
             System.out.printf(e.toString());
         }
@@ -70,7 +72,7 @@ public class Client {
                 for (Reservation reservation : newReservations)
                     printReservation(reservation);
             } else {
-                System.out.println("Reservation list is empty.");
+                System.out.println("Reservation list is empty\n");
             }
         } catch (Exception e) {
             System.out.printf(e.toString());

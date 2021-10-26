@@ -16,5 +16,7 @@ public interface RentalInterface extends Remote {
 
     public Listing getListingByTitle(String _title) throws Exception;
 
+    public void deleteListing(int _id) throws Exception;
+
     public void deleteReservation(int _id) throws Exception;
 }
