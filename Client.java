@@ -6,7 +6,7 @@ public class Client {
     public static void main(String args[]) {
         try {
             Registry reg = LocateRegistry.getRegistry("127.0.0.1", 1234);
-            RentalInterface rental = (RentalInterface) reg.lookup("server");
+            RentalInterface rental = (RentalInterface) reg.lookup("rental");
             System.out.println("Connected to RMI server\n");
 
             rental.addListing("Rental3", "Gadong", 2, 50, true);
@@ -50,5 +50,6 @@ public class Client {
         System.out.println("No. of guests: " + reservation.getNoOfGuest());
         System.out.println("Total payment: $" + reservation.getTotalPayment());
         System.out.println("Booking date and time: " + reservation.getBookingDateTime());
+        System.out.println();
     }
 }
