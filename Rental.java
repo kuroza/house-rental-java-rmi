@@ -8,7 +8,6 @@ public class Rental extends UnicastRemoteObject implements RentalInterface {
     private List<Reservation> reservations;
 
     public Rental() throws Exception {
-        super();
         listings = new ArrayList<Listing>();
         reservations = new ArrayList<Reservation>();
     }
@@ -23,14 +22,18 @@ public class Rental extends UnicastRemoteObject implements RentalInterface {
         // remove listing from listings
     }
 
-    public void addReservation(LocalDateTime _checkIn, LocalDateTime _checkOut, int _noOfGuest, double _payment,
-            LocalDateTime _bookingDateTime) {
-        Reservation newReservation = new Reservation(_checkIn, _checkOut, _noOfGuest, _payment, _bookingDateTime);
+    public void addReservation(int _id, LocalDateTime _checkIn, LocalDateTime _checkOut, int _noOfGuest,
+            double _payment, LocalDateTime _bookingDateTime) {
+        Reservation newReservation = new Reservation(_id, _checkIn, _checkOut, _noOfGuest, _payment, _bookingDateTime);
         reservations.add(newReservation);
     }
 
-    public void deleteReservation() {
-
+    public void deleteReservation(int _id) {
+        for (int i = 0; i < reservations.size(); i++) {
+            if (reservations.get(i).getId() == _id) {
+                reservations.remove(i);
+            }
+        }
     }
 
     public Listing getListingByTitle(String _title) {
@@ -49,8 +52,13 @@ public class Rental extends UnicastRemoteObject implements RentalInterface {
         return reservations;
     }
 
-    // public Reservation getReservation() {
-    // }
+    public Reservation getReservationById(int _id) {
+        for (Reservation reservation : reservations) {
+            if (reservation.getId() == _id)
+                return reservation;
+        }
+        return null;
+    }
 
     // Search
 

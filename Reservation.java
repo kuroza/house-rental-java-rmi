@@ -2,21 +2,26 @@ import java.time.*;
 import java.io.Serializable;
 
 public class Reservation implements Serializable {
-    // id
     // guest id?
+    private int id;
     private LocalDateTime checkIn;
     private LocalDateTime checkOut;
     private int noOfGuest;
     private double payment;
     private LocalDateTime bookingDateTime;
 
-    public Reservation(LocalDateTime _checkIn, LocalDateTime _checkOut, int _noOfGuest, double _payment,
+    public Reservation(int _id, LocalDateTime _checkIn, LocalDateTime _checkOut, int _noOfGuest, double _payment,
             LocalDateTime _bookingDateTime) {
+        id = _id;
         checkIn = _checkIn;
         checkOut = _checkOut;
         noOfGuest = _noOfGuest;
         payment = _payment;
         bookingDateTime = _bookingDateTime;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public LocalDateTime getCheckInDateTime() {
