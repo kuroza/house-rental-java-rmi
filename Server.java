@@ -22,8 +22,6 @@ public class Server extends UnicastRemoteObject implements RentalInterface {
         }
     }
 
-    // Host
-
     public void addListing(String title, String location, int noOfRooms, double price, boolean availability) {
         Listing newListing = new Listing(title, location, noOfRooms, price, availability);
         listings.add(newListing);
@@ -34,8 +32,6 @@ public class Server extends UnicastRemoteObject implements RentalInterface {
         // remove listing from listings
     }
 
-    // Guest
-
     public void addReservation(LocalDateTime _checkIn, LocalDateTime _checkOut, int _noOfGuest, double _payment,
             LocalDateTime _bookingDateTime) {
         Reservation newReservation = new Reservation(_checkIn, _checkOut, _noOfGuest, _payment, _bookingDateTime);
@@ -45,8 +41,6 @@ public class Server extends UnicastRemoteObject implements RentalInterface {
     public void deleteReservation() {
 
     }
-
-    // Getters
 
     public Listing getListingByTitle(String _title) {
         for (Listing listing : listings) {

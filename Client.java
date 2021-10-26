@@ -17,11 +17,11 @@ public class Client {
                 printListing(listing);
             }
 
-            Listing rental3 = rental.getListingByTitle("Rental3");
-            if (rental3 != null)
-                printListing(rental3);
+            Listing rental5 = rental.getListingByTitle("Rental5");
+            if (rental5 != null)
+                printListing(rental5);
             else
-                System.out.println("Listing doesn't exist");
+                System.out.println("Listing doesn't exist\n");
 
             rental.addReservation(LocalDateTime.of(2021, 10, 31, 14, 00), LocalDateTime.of(2021, 11, 01, 12, 00), 4, 79,
                     LocalDateTime.of(2021, 10, 29, 16, 00));

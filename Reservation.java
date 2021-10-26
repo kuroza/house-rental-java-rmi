@@ -23,12 +23,24 @@ public class Reservation implements Serializable {
         return checkIn;
     }
 
+    public void setCheckInDateTime(LocalDateTime _checkIn) {
+        checkIn = _checkIn;
+    }
+
     public LocalDateTime getCheckOutDateTime() {
         return checkOut;
     }
 
+    public void setCheckOutDateTime(LocalDateTime _checkOut) {
+        checkOut = _checkOut;
+    }
+
     public int getNoOfGuest() {
         return noOfGuest;
+    }
+
+    public void setNoOfGuest(int _noOfGuest) {
+        noOfGuest = _noOfGuest;
     }
 
     public double getTotalPayment() {
