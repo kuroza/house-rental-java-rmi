@@ -62,20 +62,24 @@ public class Rental extends UnicastRemoteObject implements RentalInterface {
             if (reservation.getId() == _id)
                 return reservation;
         }
-        return null;
+        return new Reservation();
     }
 
-    // Search
-
-    // Sort
     public List<Listing> sortListingsByTitle(List<Listing> listings) {
         Collections.sort(listings, new ListingTitleComparator());
-        List<Listing> sortedListings = new ArrayList<Listing>();
+        return sortListings(listings);
+    }
 
+    public List<Listing> sortListingsById(List<Listing> listings) {
+        Collections.sort(listings, new ListingIdComparator());
+        return sortListings(listings);
+    }
+
+    public List<Listing> sortListings(List<Listing> listings) {
+        List<Listing> sortedListings = new ArrayList<Listing>();
         for (Listing listing : listings) {
             sortedListings.add(listing);
         }
-
         return sortedListings;
     }
 }
