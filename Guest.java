@@ -10,3 +10,5 @@ public class Guest extends Person {
         super.dateOfBirth = _dateOfBirth;
     }
 }
+
+//kambing suka makan ayam
