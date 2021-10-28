@@ -10,6 +10,10 @@ public class Reservation implements Serializable {
     private double payment;
     private LocalDateTime bookingDateTime;
 
+    public Reservation() {
+
+    }
+
     public Reservation(int _id, LocalDateTime _checkIn, LocalDateTime _checkOut, int _noOfGuest, double _payment,
             LocalDateTime _bookingDateTime) {
         id = _id;
