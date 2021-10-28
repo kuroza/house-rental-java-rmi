@@ -9,28 +9,31 @@ public class Client {
             RentalInterface rental = (RentalInterface) reg.lookup("rental");
             System.out.println("Connected to RMI server\n");
 
-            rental.addListing(3, "Rental3", "Gadong", 2, 50, true);
-            rental.addListing(4, "Rental4", "Beribi", 3, 70, true);
-            printAllListings(rental);
+            rental.addListing(3, "EZ Rental3", "Gadong", 2, 50, true);
+            rental.addListing(4, "Venice Rental4", "Beribi", 3, 70, true);
+            rental.addListing(5, "LaFlame Rental5", "Rimba", 2, 60, true);
 
-            // check if rental exists
-            Listing rental5 = rental.getListingByTitle("Rental5");
-            if (rental5 != null)
-                printListing(rental5);
-            else
-                System.out.println("Listing doesn't exist\n");
+            // Listing rental5 = rental.getListingByTitle("Rental5");
+            // if (rental5 != null)
+            // printListing(rental5);
+            // else
+            // System.out.println("Listing doesn't exist\n");
 
-            rental.addReservation(1, LocalDateTime.of(2021, 10, 31, 14, 00), LocalDateTime.of(2021, 11, 01, 12, 00), 4,
-                    79, LocalDateTime.of(2021, 10, 29, 16, 00));
-            printAllReservations(rental);
+            // rental.addReservation(1, LocalDateTime.of(2021, 10, 31, 14, 00),
+            // LocalDateTime.of(2021, 11, 01, 12, 00), 4,
+            // 79, LocalDateTime.of(2021, 10, 29, 16, 00));
+            // printAllReservations(rental);
 
-            rental.deleteReservation(1);
-            printAllReservations(rental);
+            // rental.deleteReservation(1);
+            // printAllReservations(rental);
 
-            rental.deleteListing(3);
-            printAllListings(rental);
+            // rental.deleteListing(3);
+            // printAllListings(rental);
+
+            System.out.println("Sorting listings by title:\n");
+            sortAndPrintListingsByTitle(rental);
         } catch (Exception e) {
-            System.out.printf(e.toString());
+            System.out.println(e);
         }
     }
 
@@ -61,7 +64,7 @@ public class Client {
                 printListing(listing);
             }
         } catch (Exception e) {
-            System.out.printf(e.toString());
+            System.out.println(e);
         }
     }
 
@@ -75,7 +78,19 @@ public class Client {
                 System.out.println("Reservation list is empty\n");
             }
         } catch (Exception e) {
-            System.out.printf(e.toString());
+            System.out.println(e);
+        }
+    }
+
+    public static void sortAndPrintListingsByTitle(RentalInterface rental) {
+        try {
+            List<Listing> newListings = rental.getAllListings();
+            newListings = rental.sortListingsByTitle(newListings);
+            for (Listing listing : newListings) {
+                printListing(listing);
+            }
+        } catch (Exception e) {
+            System.out.println(e);
         }
     }
 }

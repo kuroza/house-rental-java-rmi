@@ -47,6 +47,9 @@ public class Rental extends UnicastRemoteObject implements RentalInterface {
     }
 
     public List<Listing> getAllListings() {
+        if (listings == null) {
+            return Collections.emptyList();
+        }
         return listings;
     }
 
@@ -65,4 +68,14 @@ public class Rental extends UnicastRemoteObject implements RentalInterface {
     // Search
 
     // Sort
+    public List<Listing> sortListingsByTitle(List<Listing> listings) {
+        Collections.sort(listings, new ListingTitleComparator());
+        List<Listing> sortedListings = new ArrayList<Listing>();
+
+        for (Listing listing : listings) {
+            sortedListings.add(listing);
+        }
+
+        return sortedListings;
+    }
 }
