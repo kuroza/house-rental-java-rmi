@@ -13,10 +13,17 @@ public interface RentalInterface extends Remote {
     public List<Listing> getAllListings() throws Exception;
 
     public List<Reservation> getAllReservations() throws Exception;
+    
+    public Listing getListingById(int _id) throws Exception;
 
     public Listing getListingByTitle(String _title) throws Exception;
 
     public void deleteListing(int _id) throws Exception;
 
     public void deleteReservation(int _id) throws Exception;
+    
+    public Boolean searchByListingId(int _id) throws Exception;
+    
+    public List<Listing> filterByListingLocation(String location) throws Exception;
+    
 }

@@ -8,6 +8,11 @@ public class Listing implements Serializable {
     private double price;
     private boolean availability;
 
+	public Listing() {
+		
+		
+	    }
+	
     public Listing(int _id, String _title, String _location, int _noOfRooms, double _price, boolean _availability) {
         id = _id;
         title = _title;

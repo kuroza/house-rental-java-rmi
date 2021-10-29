@@ -14,9 +14,21 @@ public class Rental extends UnicastRemoteObject implements RentalInterface {
 
     public void addListing(int _id, String _title, String _location, int _noOfRooms, double _price,
             boolean _availability) {
-        Listing newListing = new Listing(_id, _title, _location, _noOfRooms, _price, _availability);
-        listings.add(newListing);
-    }
+    	boolean found = false;
+		for (int i = 0; i < listings.size(); i++ ) {
+			if (listings.get(i).getId() == _id) {
+				found = true;
+			}			
+		}
+		if (found == true) {
+		System.out.println("Listings already exists.");	
+		}
+		else {
+		    Listing newListing = new Listing(_id, _title, _location, _noOfRooms, _price, _availability);
+		    listings.add(newListing);
+			}
+		}
+    
 
     public void deleteListing(int _id) {
         for (int i = 0; i < listings.size(); i++) {
@@ -38,6 +50,14 @@ public class Rental extends UnicastRemoteObject implements RentalInterface {
         }
     }
 
+    public Listing getListingById(int _id) {
+        for (Listing listing : listings) {
+            if (listing.getId() == _id)
+                return listing;
+        }
+        return new Listing();
+    }
+    
     public Listing getListingByTitle(String _title) {
         for (Listing listing : listings) {
             if (listing.getTitle().equals(_title))
@@ -63,6 +83,27 @@ public class Rental extends UnicastRemoteObject implements RentalInterface {
     }
 
     // Search
+    public Boolean searchByListingId(int _id) {
+        Boolean found = false;
+        for (int i = 0; i < listings.size(); i++) {
+            if (listings.get(i).getId() == _id) {
+                found = true;
+            }
+        }
+        return found;
+    }
+    
+    public List<Listing> filterByListingLocation(String location) {
+    	List<Listing> templist =  new ArrayList<Listing>();
+    	for (int i = 0; i < listings.size(); i++) {
+    		if (listings.get(i).getLocation().equals(location)) { 
+    			templist.add(listings.get(i));    			
+    		}
+    	}
+    	return templist;
+    }
 
+    
+    
     // Sort
 }

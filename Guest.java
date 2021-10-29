@@ -2,13 +2,12 @@ import java.util.*;
 import java.time.*;
 
 public class Guest extends Person {
-    public Guest(String _name, String _address, int _bankAccount, int _phoneNo, LocalDate _dateOfBirth) {
+    public Guest(String _name, String _address, int _bankAccount, int _phoneNo, LocalDate _dateOfBirth, int _ID) {
         super.name = _name;
         super.address = _address;
         super.bankAccount = _bankAccount;
         super.phoneNo = _phoneNo;
         super.dateOfBirth = _dateOfBirth;
+        super.id = _ID;
     }
 }
-
-//kambing suka makan ayam
