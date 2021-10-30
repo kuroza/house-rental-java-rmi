@@ -1,6 +1,8 @@
 import java.io.Serializable;
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 
-public class Listing implements Serializable {
+public class Listing extends UnicastRemoteObject implements ListingInterface, Serializable {
     private int id;
     private String title;
     private String location;
@@ -8,10 +10,11 @@ public class Listing implements Serializable {
     private double price;
     private boolean availability;
 
-    public Listing() {
+    public Listing() throws RemoteException {
     }
 
-    public Listing(int _id, String _title, String _location, int _noOfRooms, double _price, boolean _availability) {
+    public Listing(int _id, String _title, String _location, int _noOfRooms, double _price, boolean _availability)
+            throws RemoteException {
         id = _id;
         title = _title;
         location = _location;

@@ -1,7 +1,9 @@
 import java.time.*;
 import java.io.Serializable;
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 
-public class Reservation implements Serializable {
+public class Reservation extends UnicastRemoteObject implements ReservationInterface, Serializable {
     // guest id?
     private int id;
     private LocalDateTime checkIn;
@@ -10,12 +12,12 @@ public class Reservation implements Serializable {
     private double payment;
     private LocalDateTime bookingDateTime;
 
-    public Reservation() {
+    public Reservation() throws RemoteException {
 
     }
 
     public Reservation(int _id, LocalDateTime _checkIn, LocalDateTime _checkOut, int _noOfGuest, double _payment,
-            LocalDateTime _bookingDateTime) {
+            LocalDateTime _bookingDateTime) throws RemoteException {
         id = _id;
         checkIn = _checkIn;
         checkOut = _checkOut;

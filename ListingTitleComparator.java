@@ -1,7 +1,11 @@
 import java.util.*;
 
-public class ListingTitleComparator implements Comparator<Listing> {
-    public int compare(Listing a1, Listing a2) {
-        return a1.getTitle().compareTo(a2.getTitle());
+public class ListingTitleComparator implements Comparator<ListingInterface> {
+    public int compare(ListingInterface a1, ListingInterface a2) {
+        try {
+            return a1.getTitle().compareTo(a2.getTitle());
+        } catch (Exception e) {
+            return 0;
+        }
     }
 }
