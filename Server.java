@@ -10,6 +10,7 @@ public class Server {
             reg.rebind("rental", new Rental());
             reg.rebind("listing", new Listing());
             reg.rebind("reservation", new Reservation());
+            reg.rebind("user", new User());
             System.out.println("Server started");
         } catch (Exception e) {
             System.out.printf(e.toString());
